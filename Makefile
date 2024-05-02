@@ -95,3 +95,48 @@ toy:
 		number=`expr $$number + 16` ; \
 	done
 
+######################5G Camflow ################################################
+5gcamflow-train-1:
+	mkdir -p ~/ds/camflow/30-04-2024/train
+	number=0 ; while [ $$number -le 9 ] ; do \
+		bin/unicorn/main filetype edgelist base ~/ds/camflow/30-04-2024/base/base-$$number.txt stream ~/ds/camflow/30-04-2024/stream/stream-$$number.txt decay 500 lambda 0.02 batch 2000 sketch ~/ds/camflow/30-04-2024/train/sketch-$$number.txt chunkify 1 chunk_size 50 ; \
+		rm -rf ~/ds/camflow/30-04-2024/base/base-$$number.txt.* ; \
+		rm -rf ~/ds/camflow/30-04-2024/base/base-$$number.txt_* ; \
+		number=`expr $$number + 1` ; \
+	done
+
+5gcamflow-train-2:
+	mkdir -p ~/ds/camflow/30-04-2024/train
+	number=10 ; while [ $$number -le 19 ] ; do \
+		bin/unicorn/main filetype edgelist base ~/ds/camflow/30-04-2024/base/base-$$number.txt stream ~/ds/camflow/30-04-2024/stream/stream-$$number.txt decay 500 lambda 0.02 batch 2000 sketch ~/ds/camflow/30-04-2024/train/sketch-$$number.txt chunkify 1 chunk_size 50 ; \
+		rm -rf ~/ds/camflow/30-04-2024/base/base-$$number.txt.* ; \
+		rm -rf ~/ds/camflow/30-04-2024/base/base-$$number.txt_* ; \
+		number=`expr $$number + 1` ; \
+	done
+
+5gcamflow-train-3:
+	mkdir -p ~/ds/camflow/30-04-2024/train
+	number=100 ; while [ $$number -le 159 ] ; do \
+		bin/unicorn/main filetype edgelist base ~/ds/camflow/30-04-2024/base/base-$$number.txt stream ~/ds/camflow/30-04-2024/stream/stream-$$number.txt decay 500 lambda 0.02 batch 2000 sketch ~/ds/camflow/30-04-2024/train/sketch-$$number.txt chunkify 1 chunk_size 50 ; \
+		rm -rf ~/ds/camflow/30-04-2024/base/base-$$number.txt.* ; \
+		rm -rf ~/ds/camflow/30-04-2024/base/base-$$number.txt_* ; \
+		number=`expr $$number + 1` ; \
+	done
+
+5gcamflow-test:
+	mkdir -p ~/ds/camflow/30-04-2024/test
+	number=20 ; while [ $$number -le 24 ] ; do \
+		bin/unicorn/main filetype edgelist base ~/ds/camflow/30-04-2024/base/base-$$number.txt stream ~/ds/camflow/30-04-2024/stream/stream-$$number.txt decay 500 lambda 0.02 batch 2000 sketch ~/ds/camflow/30-04-2024/test/sketch-$$number.txt chunkify 1 chunk_size 50 ; \
+		rm -rf ~/ds/camflow/30-04-2024/base/base-$$number.txt.* ; \
+		rm -rf ~/ds/camflow/30-04-2024/base/base-$$number.txt_* ; \
+		number=`expr $$number + 1` ; \
+	done
+
+5gcamflow-attack:
+	# number=0 ; while [ $$number -le 1 ] ; do \
+	# 	bin/unicorn/main filetype edgelist base ~/ds/camflow/30-04-2024/base/base-attack-$$number.txt stream ~/ds/camflow/30-04-2024/stream/stream-attack-$$number.txt decay 500 lambda 0.02 batch 2000 sketch ~/ds/camflow/30-04-2024/test/sketch-attack-$$number.txt chunkify 1 chunk_size 50 ; \
+	# 	rm -rf ~/ds/camflow/30-04-2024/base/base-attack-$$number.txt.* ; \
+	# 	rm -rf ~/ds/camflow/30-04-2024/base/base-attack-$$number.txt_* ; \
+	# 	number=`expr $$number + 1` ; \
+	# done
+
