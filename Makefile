@@ -107,7 +107,7 @@ toy:
 
 5gcamflow-train-2:
 	mkdir -p ~/ds/camflow/30-04-2024/train
-	number=10 ; while [ $$number -le 19 ] ; do \
+	number=5 ; while [ $$number -le 9 ] ; do \
 		bin/unicorn/main filetype edgelist base ~/ds/camflow/30-04-2024/base/base-$$number.txt stream ~/ds/camflow/30-04-2024/stream/stream-$$number.txt decay 500 lambda 0.02 batch 2000 sketch ~/ds/camflow/30-04-2024/train/sketch-$$number.txt chunkify 1 chunk_size 50 ; \
 		rm -rf ~/ds/camflow/30-04-2024/base/base-$$number.txt.* ; \
 		rm -rf ~/ds/camflow/30-04-2024/base/base-$$number.txt_* ; \
